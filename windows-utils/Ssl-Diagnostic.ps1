@@ -226,7 +226,7 @@ Test-NetConnection $RemoteHost -Port 443 -InformationLevel "Detailed"
 $TestPortConnection = Test-TCPPortConnection -ComputerName $RemoteHost -Port 443
 
 # Runs a traceroute and returns the result.
-$TestRoute = Invoke-Traceroute -Destination $RemoteHost 
+# $TestRoute = Invoke-Traceroute -Destination $RemoteHost 
 
 # Diagnose ssl connectivity 
 $TestTLS = Test-ServerSSLSupport -HostName $RemoteHost
