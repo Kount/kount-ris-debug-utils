@@ -235,6 +235,61 @@ Write-Output $TestPortConnection
 
 Write-Output $TestTLS
 
+try
+{
+Write-Output("Version required for .NET SDK 4.0.0 or higher")
+Write-Host "Current .NET version is : " $dotNetVersion (Get-Childitem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full').GetValue("version")
+}
+catch
+{
+ Write-Output(".NET version is not found")   
+}
+try
+{
+Write-Output("----------------------------------------------------------------------")
+Write-Output("Version required for JAVA SDK 1.6.0 or higher")
+Write-Host 'java -version'
+$out = &"java.exe" -version 2>&1
+Write-Host ("Current Version is : " + $out[0].tostring())
+}
+catch
+{
+ Write-Host("Java version is not found")   
+}
+try
+{
+Write-Output("----------------------------------------------------------------------")
+Write-Output("Version required for PHP SDK 5.0.0 or higher")
+$phpVersion = php --version
+Write-Output ("Current Version is : " + $phpVersion.substring(0, 9))
+}
+catch
+{
+ Write-Output("PHP version is not found")   
+}
+try
+{
+Write-Output("----------------------------------------------------------------------")
+Write-Output("Version required for RUBY SDK 2.0.0 or higher")
+$rubyVersion = ruby --version
+Write-Output($rubyVersion)
+}
+catch
+{
+ Write-Output("RUBY version is not found")   
+}
+try
+{
+Write-Output("----------------------------------------------------------------------")
+Write-Output("Version required for PYTHON SDK 2.0.0 or higher")
+$pythonVersion = python --version
+Write-Output($pythonVersion)
+}
+catch
+{
+ Write-Output("Python version is not found")   
+}
+
 # Gets the list of cipher suites for TLS for a computer
 # $TlsCipherSuite = Get-TlsCipherSuite -Name "TLS" 
 # Write-Output "--------------Tls Cipher Suite------------------------------------"
